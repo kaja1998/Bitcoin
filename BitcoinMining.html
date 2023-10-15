@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <!-- <link rel="stylesheet" href="BitcoinMining.css"> -->
+    <title>Bitcoin Stromverbrauch</title>
+</head>
+
+<body>
+    <!-- Logo, Einleitung und Video im Hintergrund -->
+    <div class= "logo-und-einleitung-container">
+        <!-- Video im Hintergrund -->
+        <video autoplay muted loop id="background-video">
+            <source src="1118283_Numbers_Virtual_Texture_3840x2160.mp4" type="video/mp4">
+        </video>
+
+        <!-- Logo -->
+        <div class= "logo-container">
+            <div class="logo">
+                <img src="Logo.png">
+            </div>
+        </div>
+
+        <!-- Einleitung -->
+        <div class="einleitung-container">
+            <h1 class="einleitung-title" id="counter">0  TWH STROM</h1>
+            <p class="einleitung-text">Die Debatte &uumlber die &Uumlberlegenheit von Bitcoins gegen&uumlber Bargeld und Co. ist allgegenw&aumlrtig, doch h&aumlufig wird dabei ein entscheidender Faktor &uumlbersehen – der immense Stromverbrauch der Blockchain-Technologie.</p>
+            <a href="javascript:toggle('containerid')" class="einleitung-toggle">Mehr lesen ></a>
+            <div id="containerid" class="einleitung-text2" style="display: none;">Mit einem Verbrauch von 107 Terawattstunden im Jahr 2022 stellt der Stromverbrauch der Kryptow&aumlhrung den einiger andere energieintensiver Branchen und Systeme deutlich in den Schatten. W&aumlhrend die Debatte &uumlber die Vorteile von Bitcoins also weitergeht, sollte der enorme Stromverbrauch von Bitcoin jedoch eher zum Nachdenken anregen.</div>
+        </div>
+
+    </div>
+
+    <!-- 3er Modul -->
+    <div class="table-container">
+        <div class="table">
+            <h1>Zirkulierende Coins</h1>
+            <h2>19.440.293</h2>
+        </div>
+        <div class="table">
+            <h1>Stromverbrauch pro Transaktion</h1>
+            <h2>701,63 kWh</h2>
+        </div>
+        <div class="table">
+            <h1>Max. Coins</h1>
+            <h2>21.000.000</h2>
+        </div>
+    </div>
+
+    <div class="bild-text-und-chart">  
+        <!-- Bild-Text Modul -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="grafik-container">
+                    <img src="SteckerBitcoin.png" id="image">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="text2" id="textContainer">
+                    <h1 id="header">KLIMAKILLER BITCOIN</h1>
+                    <p>Bitcoin basiert auf einer Blockchain-Technologie, bei der Transaktionen in Bl&oumlcken gesammelt werden. Das "Mining" von neuen Bl&oumlcken erfordert die L&oumlsung komplexer mathematischer Probleme, um Transaktionen auszuf&uumlhren und neue Bitcoins zu erstellen. </p>
+                    <p>Der hohe Stromverbrauch entsteht durch eben diesen Proof-of-Work-Konsensmechanismus, der die Netzwerksicherheit gew&aumlhrleistet. Dies hat jedoch Bedenken hinsichtlich der Umweltauswirkungen hervorgerufen, da der Stromverbrauch von Bitcoin mit dem einiger Rechnernetzwerken in bestimmten Branchen und sogar mit dem einiger L&aumlnder der Welt vergleichbar ist und weiter zunimmt.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trennlinie -->
+        <div class="Trennlinie"></div>
+
+        <!-- Chart -->
+        <div class="chart-grid">
+            <div class="headline">
+                <h1>DER STROMVERBRAUCH IM VERGLEICH</h1>
+            </div> 
+            <div class="chart-container">
+                <div id="chart-container">
+                    <canvas id="polarAreaChart"></canvas>
+                </div>
+                <div id="year-slider">
+                    <input class="mdl-slider" type="range" min="2010" max="2022" step="1" value="2010" tabindex="0" id="yearRange">
+                </div>
+                <div id="year-label"></div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Skripte -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Bitcoin.js"></script>
+
+</body>
+
+<!-- Footer -->
+<footer>
+
+    <div class="footer-container">
+        <p class="footer-container-klein1">2023 Copyright | by Kaja Sund and Lena Jelschen</p>
+        <p class="footer-container-klein2">Gestaltung 2 bei Prof. Andreas Teufel und Dipl.- Des. Julian H&ouml;lscher</p>
+    </div>
+
+</footer>
+
+</html>
+
+
+<style>
+
+
+    /* 
+    * Body gernell
+    *
+    */
+    body {
+        display: initial;
+        background-color: rgb(7,7,18);
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+
+
+
+
+    /* 
+    * Logo, Einleitung und Video im Hintergrund
+    *
+    */
+    .logo-und-Einleitung-Container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 130%;
+        object-fit: cover;
+        z-index: -1;                /* Push the video element to the background */
+        opacity: 0.08;              /* Adjust the opacity as needed (0.0 to 1.0) */
+    }
+
+
+
+
+    /* 
+    * Logo
+    *
+    */
+    .logo-container {
+        position: relative;
+        perspective: 100rem;
+        margin-top: 20px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+
+
+
+    /* 
+    * Einleitung
+    *
+    */
+    .einleitung-container {
+        padding-top: 255px;
+        padding-bottom: 350px;
+        height: 100px;               /*Höhe festsetzen, damit wenn das toggle ausgeklappt wird sich die größe des Bildes nicht verändert */
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .einleitung-title {
+        color: #52bfd3;
+        font-family: "Arial Black";
+        font-weight: bold;
+        font-size: 50px;
+        letter-spacing: 0.1rem;
+        padding-top: 50px;
+        margin: 0px;
+    }
+
+    .einleitung-text {
+        font-family: "Roboto";
+        color: white;
+        font-weight: lighter;
+        font-size: 18px;
+        letter-spacing: 1px;
+        line-height: 1.6rem;
+        margin-bottom: 5px;
+        padding-right: 40%;
+    }
+
+    .einleitung-toggle {
+        font-family: "Roboto";
+        line-height: 1.6rem;
+        font-weight: bold;
+        color: #aaaaaa;
+        font-size: 18px;
+        text-decoration: none;      /* Kein kleiner Punkt links und rechts von dem Pfeil und kein Strich wenn ausgeklappt */
+    }
+
+    .einleitung-toggle:hover {
+        color: #3e628d;
+    }
+
+    .einleitung-text2 {
+        font-family: "Roboto";
+        line-height: 1.6rem;
+        font-weight: lighter;
+        color: white;
+        font-size: 18px;
+        padding-top: 5px;
+        padding-right: 40%;
+    }
+
+
+
+
+    /* 
+    * Table bzw. 3 Infos
+    *
+    */
+    .table-container {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        overflow: hidden;
+        background-color: #060610;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .table {
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .table h1 {
+        font-family: "Roboto";
+        font-weight: normal;
+        color: white;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .table h2 {
+        font-family: "Arial Black";
+        font-weight: lighter;
+        color: #aaaaaa;
+        font-size: 30px;
+        line-height: 10px;
+    }
+
+
+
+
+    /*
+    * Hintergrundbild vom Bild-Text und Chart
+    *
+    */
+    .bild-text-und-chart {
+        background-image: url("Chart_Background.png");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.95;
+    }
+
+
+
+
+    /*
+    * Bild-Text Modul
+    *
+    */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin: 0px;
+        padding-top: 150px;
+        padding-bottom: 120px;
+    }
+
+    .grid-item {
+        margin: 0px;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .grafik-container {
+        margin: 0px;
+        padding: 0px;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .grafik-container img {
+        max-width: 600px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        text-align: center;
+    }
+
+    .text2 {
+        max-width: 600px;
+        width: 100%;
+        color: white;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .text2 h1 {
+        font-family: "Arial Black";
+        font-weight: normal;
+        line-height: 1.5rem;
+        color: #52bfd3;
+        font-size: 30px;
+        text-align: left;
+        padding-bottom: 5px;
+        padding-top: 0px;
+    }
+
+    .text2 p {
+        font-family: "Roboto";
+        font-weight: lighter;
+        color: white;
+        justify-content: space-between;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 1.5rem;
+        text-align: left;
+    }
+
+
+
+
+    /*
+    * Trennstrich zwischen Bild - Text und Chart
+    *
+    */
+    .Trennlinie {
+        border: solid #233750 2px;
+        margin-left: 25%;
+        margin-right: 25%;
+        opacity: 0.7;
+    }
+
+
+
+
+    /* 
+    * Polar Area Chart
+    *
+    */
+    .chart-grid {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 120px;
+        padding-bottom: 150px;
+    }
+
+    .headline h1 {
+        font-family: "Arial Black";
+        font-weight: bold;
+        line-height: 1.5rem;
+        color: #52bfd3;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #chart-container {
+        width: 630px;
+        height: 630px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+
+    #year-slider {
+        position: relative;
+        width: 200px;
+        display: flex;
+        margin-top: 3%;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: grabbing;
+        background-color: #36A2EB;
+        border-radius: 10px;
+        height: 1.5px;
+        box-shadow: 0 0 5px 3px rgba(220, 208, 208, 0.3);
+    }
+
+    /* Range-Schieberegler */
+    #year-slider input[type="range"] {
+        appearance: none;               /* Um das Standard-Track-Aussehen zu entfernen */
+        -webkit-appearance: none;       /* Für Safari-basierte Browser */
+        background: transparent;
+        align-items: center;
+    }
+
+    /* Schieberegler Punkt */
+    #year-slider input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;      /* Um das Standard-Aussehen des Thumb zu entfernen */
+        appearance: none;
+        /* Stile für den Thumb */
+        width: 15px;
+        height: 15px;
+        background-color: rgb(170, 170, 170);;
+        border-radius: 50%;
+        cursor: grabbing;               /* Wenn der Schieberegler angefasst wird taucht eine kleine Hand auf */
+        justify-content: center;
+    }
+
+    /* Anpassung der Schieberegler-Breite */
+    .mdl-slider {
+        width: 500px;
+        transform: scaleX(1);           /* Richtung in die der Schieberegler geschoben werden soll */
+    }
+
+    #year-label {
+        font-family: "Arial Black";
+        font-weight: bold;
+        font-size: 50px;
+        letter-spacing: 5px;
+        color: white;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+
+
+
+    /* 
+    * Footer
+    *
+    */
+    footer {
+        padding-left: 60px;
+        padding-right: 60px;
+        background-color: #060610;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .footer-container-klein1 {
+        text-align: left;
+    }
+
+    .footer-container-klein2 {
+        text-align: right;
+    }
+
+    footer p {
+        font-family: "Roboto";
+        font-weight: normal;
+        color: #aaaaaa; 
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+</style>
